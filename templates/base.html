@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UWI Connect{% endblock %}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'core:home' %}">Home</a></li>
+            <li><a href="{% url 'core:about' %}">About</a></li>
+            <li><a href="{% url 'core:features' %}">Features</a></li>
+            <li><a href="{% url 'core:pricing' %}">Pricing</a></li>
+            <li><a href="{% url 'core:help' %}">Help Center</a></li>
+            <li><a href="{% url 'core:safety' %}">Safety Tips</a></li>
+
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'profiles:profile' %}">Profile</a></li>
+            <li><a href="{% url 'accounts:settings' %}">Settings</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+            <li><a href="{% url 'accounts:register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <fotter>
+
+    </fotter>
+    
+</body>
+</html>
